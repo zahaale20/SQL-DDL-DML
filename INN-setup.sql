@@ -1,0 +1,26 @@
+-- Alex Zaharia
+-- azaharia@calpoly.edu
+-- Apr 19, 2023
+
+CREATE TABLE Rooms (
+  RoomId VARCHAR(3) NOT NULL PRIMARY KEY,
+  roomName VARCHAR(255) NOT NULL,
+  beds INTEGER NOT NULL,
+  bedType VARCHAR(255) NOT NULL,
+  maxOccupancy INTEGER NOT NULL,
+  basePrice DECIMAL(10, 2) NOT NULL,
+  decor VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE Reservations (
+  Code INT NOT NULL PRIMARY KEY,
+  Room VARCHAR(3) NOT NULL,
+  CheckIn DATE NOT NULL,
+  CheckOut DATE NOT NULL,
+  Rate DECIMAL(10, 2) NOT NULL,
+  LastName VARCHAR(255) NOT NULL,
+  FirstName VARCHAR(255) NOT NULL,
+  Adults INTEGER NOT NULL,
+  Kids INTEGER NOT NULL,
+  FOREIGN KEY (Room) REFERENCES Rooms(RoomId)
+);
